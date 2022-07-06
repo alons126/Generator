@@ -94,10 +94,9 @@ $n_knots        = 30                            unless defined $n_knots ;
                    1000010010 => 'p' );
 
 @nucleons_proc = ( 'none',
-		   'EM' );
-#                   'EMRES',
-#                   'EMDIS',
-#                   'EMQE' );
+                   'EMRES',
+                   'EMDIS',
+                   'EMQE' );
 
 %chlepton_pdg_def = ( 'e'      =>   11,
 		      'ebar'   =>  -11,

@@ -25,18 +25,18 @@ foreach (@ARGV) {
   if($_ eq '--add-list')        { $add_list       = $ARGV[$iarg+1]; }
   if($_ eq '--root-output')     { $root_output    = 1 ; }
   if($_ eq '--event-gen-list')  { $event_gen_list = $ARGV[$iarg+1]; }
-  if($_ eq '--def-nu-list')     { $def_nu_list    = $ARGV[$iarg+1]; }
+  if($_ eq '--def-lepton-list') { $def_lepton_list    = $ARGV[$iarg+1]; }
   if($_ eq '--add-nucleons')    { $add_nucleons   = 1 ; }
   if($_ eq '--save-space' )     { $save_space     = 1 ; } 
   $iarg++;
 }
 
 $dir=$ENV{'PWD'}      unless defined $dir;
-$def_nu_list = "14"   unless defined $def_nu_list ;
+$def_lepton_list = "14"   unless defined $def_lepton_list ;
 
 opendir(DIR, $dir) or die $!;
 
-%nus = ();
+%leptons = ();
 %tags = ();
 %lists = ();
 
@@ -53,8 +53,8 @@ while (my $file = readdir(DIR) ) {
   my $under_counter = $file =~ tr/_//; 
   next unless ( $under_counter == 3 );
 
-  my $nu = substr($file, 0, index($file, '_') );
-  if ( ! exists( $nus{$nu} ) ) { $nus{$nu}=1; } 
+  my $lepton = substr($file, 0, index($file, '_') );
+  if ( ! exists( $leptons{$lepton} ) ) { $leptons{$lepton}=1; } 
 
   my $tgt = substr($file, index($file, "on_")+3, rindex($file, '_')-index($file, "on_")-3 );
   if ( ! exists( $tgts{$tgt} ) ) { $tgts{$tgt}=1; } 
@@ -68,9 +68,9 @@ while (my $file = readdir(DIR) ) {
 
 closedir(DIR);
 
-print " Neutrinos: \n";
-foreach my $nu ( keys %nus ) {
-    print "$nu ";
+print " Leptons: \n";
+foreach my $lepton ( keys %leptons ) {
+    print "$lepton ";
 }
 
 print "\n targets: \n";
@@ -84,19 +84,25 @@ foreach my $proc ( keys %lists ) {
 }
 print "\n";
 
-$nus{'ve'}=12        if ( exists( $nus{'ve'} ) );
-$nus{'vebar'}=-12    if ( exists( $nus{'vebar'} ) );
-$nus{'vmu'}=14       if ( exists( $nus{'vmu'} ) );
-$nus{'vmubar'}=-14   if ( exists( $nus{'vmubar'} ) );
-$nus{'vtau'}=16      if ( exists( $nus{'vtau'} ) );
-$nus{'vtaubar'}=-16  if ( exists( $nus{'vtaubar'} ) );
+$leptons{'e'}=11        if ( exists( $leptons{'e'} ) );
+$leptons{'ebar'}=-11    if ( exists( $leptons{'ebar'} ) );
+$leptons{'mu'}=13       if ( exists( $leptons{'mu'} ) );
+$leptons{'mubar'}=-13   if ( exists( $leptons{'mubar'} ) );
+$leptons{'tau'}=15      if ( exists( $leptons{'tau'} ) );
+$leptons{'taubar'}=-15  if ( exists( $leptons{'taubar'} ) );
+$leptons{'ve'}=12        if ( exists( $leptons{'ve'} ) );
+$leptons{'vebar'}=-12    if ( exists( $leptons{'vebar'} ) );
+$leptons{'vmu'}=14       if ( exists( $leptons{'vmu'} ) );
+$leptons{'vmubar'}=-14   if ( exists( $leptons{'vmubar'} ) );
+$leptons{'vtau'}=16      if ( exists( $leptons{'vtau'} ) );
+$leptons{'vtaubar'}=-16  if ( exists( $leptons{'vtaubar'} ) );
 
-$nu_list="";
-foreach $nu ( keys %nus ) {
-    $nu_list .= "," if ( $nu_list ne "" );
-    $nu_list .= $nus{$nu};
+$lepton_list="";
+foreach $lepton ( keys %leptons ) {
+    $lepton_list .= "," if ( $lepton_list ne "" );
+    $lepton_list .= $leptons{$lepton};
 }
-##print $nu_list."\n";
+##print $lepton_list."\n";
 
 $proc_list = "";
 foreach $proc ( keys %lists ) {
@@ -116,15 +122,15 @@ foreach my $tgt ( keys %tgts ) {
   }   
   else { $tmp_tgt = $tgt; }
 
-  $nu_file_list = "";
+  $lepton_file_list = "";
 
-  foreach my $nu ( keys %nus ) {
+  foreach my $lepton ( keys %leptons ) {
   
     $proc_file_list = "";
     
     foreach my $proc ( keys %lists ) {
 
-      $tmp_proc_file="$dir/".$nu."_on_".$tgt."_".$proc.".xml";
+      $tmp_proc_file="$dir/".$lepton."_on_".$tgt."_".$proc.".xml";
       if ( -f $tmp_proc_file ) {
 	  $proc_file_list .= "," if ( $proc_file_list ne "" );
           $proc_file_list .= "$tmp_proc_file";
@@ -134,39 +140,39 @@ foreach my $tgt ( keys %tgts ) {
       }
     }  ##proc list
 
-    $tmp_nu_file = "$dir/".$nu."_on_".$tgt.".xml"; 
+    $tmp_lepton_file = "$dir/".$lepton."_on_".$tgt.".xml"; 
 
-    $gspladd_opt    = " -o $tmp_nu_file -f $proc_file_list ";
+    $gspladd_opt    = " -o $tmp_lepton_file -f $proc_file_list ";
     $gspladd_cmd    = "gspladd $gspladd_opt";
     print "$gspladd_cmd \n \n";
     `$gspladd_cmd \n`;
 
-    if ( -f $tmp_nu_file ) {
-	$nu_file_list .= "," if ( $nu_file_list ne "" );
-        $nu_file_list .= "$tmp_nu_file";
+    if ( -f $tmp_lepton_file ) {
+	$lepton_file_list .= "," if ( $lepton_file_list ne "" );
+        $lepton_file_list .= "$tmp_lepton_file";
     }
     else { 
-	print "Error: $tmp_nu_file not created \n";
+	print "Error: $tmp_lepton_file not created \n";
     }
     
-  } ## nu loop 
+  } ## lepton loop 
 
   $tmp_tgt_file = "$dir/".$tgt.".xml"; 
 
-  $nus_size = keys %nus ;
+  $leptons_size = keys %leptons ;
 
-  if ( $nus_size > 1 ) { 
-    $gspladd_opt    = " -o $tmp_tgt_file -f $nu_file_list ";
+  if ( $leptons_size > 1 ) { 
+    $gspladd_opt    = " -o $tmp_tgt_file -f $lepton_file_list ";
     $gspladd_cmd    = "gspladd $gspladd_opt";
     print "$gspladd_cmd \n \n";
     `$gspladd_cmd \n`;
   }
-  elsif ( $nus_size == 1 ) {
-    $cp_cmd = "cp $nu_file_list $tmp_tgt_file ";
+  elsif ( $leptons_size == 1 ) {
+    $cp_cmd = "cp $lepton_file_list $tmp_tgt_file ";
     print "$cp_cmd \n \n";
     `$cp_cmd \n`;  
   }
-  elsif ( $nus_size == 0 ) {
+  elsif ( $leptons_size == 0 ) {
     print "\nError: No Neutrino flavours \n";
   }
 
@@ -191,7 +197,7 @@ if ( ($tgt_size > 1) or (defined $add_list ) ) {
     $tgt_file_list = "$add_list" . "," . "$tgt_file_list" ;
   }
 
-  if ( defined $add_nucleons ) {
+  if ( defined $add_leptoncleons ) {
     if ( index($tgt_list, "1000010010") == -1 ) {
       $tgt_list .= ",1000010010";
     } 
@@ -226,8 +232,8 @@ if ( defined $root_output ) {
 ## Create an output file with all the splines in root format
 ##
     
-  if ( $nu_list eq "" ) {
-    $nu_list = $def_nu_list ;
+  if ( $lepton_list eq "" ) {
+    $lepton_list = $def_lepton_list ;
   }
 
   if ( index($tgt_list, "1000010010") == -1 ) {
@@ -241,7 +247,7 @@ if ( defined $root_output ) {
   }
 
   my $cmd = "gspl2root ";
-  $cmd .= " -p $nu_list ";
+  $cmd .= " -p $lepton_list ";
   $cmd .= " -t $tgt_list ";
   $cmd .= " -f $glob_file ";
   $cmd .= " -o $dir"."/total_xsec.root " ;
@@ -263,15 +269,15 @@ if ( defined $save_space ) {
 
   foreach my $tgt ( keys %tgts ) {
 
-    foreach my $nu ( keys %nus ) {
+    foreach my $lepton ( keys %leptons ) {
   
-      my $tmp_nu_file = "$dir/".$nu."_on_".$tgt.".xml"; 
+      my $tmp_lepton_file = "$dir/".$lepton."_on_".$tgt.".xml"; 
 
-      if ( -f $tmp_nu_file ) {
-        `rm $tmp_nu_file` ;
+      if ( -f $tmp_lepton_file ) {
+        `rm $tmp_lepton_file` ;
       }
     
-    } ## nu loop 
+    } ## lepton loop 
 
     my $tmp_tgt_file = "$dir/".$tgt.".xml"; 
 

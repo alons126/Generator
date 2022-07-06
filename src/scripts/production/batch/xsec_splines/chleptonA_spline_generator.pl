@@ -127,8 +127,11 @@ else {
 print "\n Charged lepton List: @nu_list \n";
 
 @nuclei_proc = ( 'none',
+#		 'EM'
                  'EMMEC',
-                 'EMQE'
+                 'EMQE',
+		 'EMRES',
+		 'EMDIS'
     );
 
 # create the lsit of processes to be generated for composite nuclei
@@ -155,6 +158,7 @@ else {
 	     1000060120,
 	     1000080160,
 	     1000130270,
+	     1000180400,
 	     1000200400,
 	     1000200480,
 	     1000260560,
