@@ -91,8 +91,8 @@ $softw_topdir   = "/opt/ppd/t2k/softw/GENIE/"   unless defined $softw_topdir;
 $jobs_topdir    = $ENV{'PWD'}                   unless defined $jobs_topdir;
 $freenucsplines = "$jobs_topdir/$genie_version-$production\_$cycle-xsec\_chleptonN" unless defined $freenucsplines;
 $priority       = 0                             unless defined $priority ;
-$e_max          = 35                            unless defined $e_max ;
-$n_knots        = 200                           unless defined $n_knots ;
+$e_max          = 20                            unless defined $e_max ;
+$n_knots        = 50                           unless defined $n_knots ;
 
 
 $genie_setup    = "$softw_topdir/generator/builds/$arch/$genie_version-setup";
