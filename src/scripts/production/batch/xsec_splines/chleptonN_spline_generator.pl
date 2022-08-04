@@ -84,7 +84,7 @@ $genie_setup    = "$softw_topdir/generator/builds/$arch/$genie_version-setup";
 $jobs_dir       = "$jobs_topdir/$genie_version-$production\_$cycle-xsec\_chleptonN";
 $priority       = 0                             unless defined $priority ;
 $e_max          = 20                            unless defined $e_max ;
-$n_knots        = 50                            unless defined $n_knots ;
+$n_knots        = 100                           unless defined $n_knots ;
 
 
 %nucleons_pdg = ( 'n'  =>  1000000010,

@@ -92,7 +92,7 @@ $jobs_topdir    = $ENV{'PWD'}                   unless defined $jobs_topdir;
 $freenucsplines = "$jobs_topdir/$genie_version-$production\_$cycle-xsec\_chleptonN" unless defined $freenucsplines;
 $priority       = 0                             unless defined $priority ;
 $e_max          = 20                            unless defined $e_max ;
-$n_knots        = 50                           unless defined $n_knots ;
+$n_knots        = 100                           unless defined $n_knots ;
 
 
 $genie_setup    = "$softw_topdir/generator/builds/$arch/$genie_version-setup";
