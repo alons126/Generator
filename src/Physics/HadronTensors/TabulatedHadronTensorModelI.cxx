@@ -66,6 +66,11 @@ namespace {
     else if ( htt == genie::kHT_MEC_DeltaAll ) return "MEC_DeltaAll";
     else if ( htt == genie::kHT_MEC_Deltapn ) return "MEC_Deltapn";
     else if ( htt == genie::kHT_MEC_EM ) return "MEC_EM";
+
+//  My changes: start
+    else if ( htt == genie::kHT_MEC_EM_pn ) return "MEC_EM_pn";
+//  My changes: end
+
     else if ( htt == genie::kHT_MEC_EM_wImag ) return "MEC_EM_wImag";
     else if ( htt == genie::kHT_QE_EM ) return "QE_EM";
     else if ( htt == genie::kHT_MEC_FullAll_Param ) return "MEC_FullAll_Param";
