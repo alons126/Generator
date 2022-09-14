@@ -187,7 +187,12 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
     // If the probe is not a neutrino, assume that it's an electron
     // For the moment all electron interactions are pp final state
     tensor_type = kHT_MEC_EM;
-    pn_tensor_type = kHT_MEC_EM;
+
+//  My changes: start
+//    pn_tensor_type = kHT_MEC_EM; // Original line
+    pn_tensor_type = kHT_MEC_EM_pn;
+//  My changes: end
+
   }
 
   // The SuSAv2-MEC hadron tensors are defined using the same conventions
