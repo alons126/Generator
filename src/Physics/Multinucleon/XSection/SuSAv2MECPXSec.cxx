@@ -189,8 +189,8 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
     tensor_type = kHT_MEC_EM;
 
 //  My changes: start
-//    pn_tensor_type = kHT_MEC_EM; // Original line
-    pn_tensor_type = kHT_MEC_EM_pn;
+    pn_tensor_type = kHT_MEC_EM; // Original line
+//    pn_tensor_type = kHT_MEC_EM_pn;
 //  My changes: end
 
   }
