@@ -65,7 +65,12 @@ double SuSAv2MECPXSec::XSec(const Interaction* interaction,
     // If the probe is not a neutrino, assume that it's an electron
     // For the moment all electron interactions are pp final state
     tensor_type = kHT_MEC_EM;
-    //pn_tensor_type = kHT_MEC_EM;
+
+//  My changes: start
+//    pn_tensor_type = kHT_MEC_EM; // Original line
+      pn_tensor_type = kHT_MEC_EM_pn;
+//  My changes: end
+
   }
 
   // Currently we only have the relative pair contributions for C12.
