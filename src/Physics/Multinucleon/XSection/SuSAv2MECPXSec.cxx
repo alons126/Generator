@@ -105,8 +105,8 @@ double SuSAv2MECPXSec::XSec(const Interaction* interaction,
   // The Q-Value essentially corrects q0 to account for nuclear
   // binding energy in the Valencia model but this effect is already
   // in Guille's tensors so its set it to 0.
-  // However, additional corrections may be necessary: 
-  double Delta_Q_value = Qvalue( * interaction ) ; 
+  // However, additional corrections may be necessary:
+  double Delta_Q_value = Qvalue( * interaction ) ;
 
   genie::utils::mec::Getq0q3FromTlCostl(Tl, costl, Ev, ml, Q0, Q3);
 
@@ -243,8 +243,8 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
   // The Q-Value essentially corrects q0 to account for nuclear
   // binding energy in the Valencia model but this effect is already
   // in Guille's tensors so its set it to 0.
-  // However, additional corrections may be necessary: 
-  double Delta_Q_value = Qvalue( * interaction ) ; 
+  // However, additional corrections may be necessary:
+  double Delta_Q_value = Qvalue( * interaction ) ;
 
   // Compute the cross section using the hadron tensor
   double xsec_all = tensor->dSigma_dT_dCosTheta_rosenbluth(interaction, Delta_Q_value);
@@ -255,6 +255,17 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
   if(xsec_pn==0) xsec_pn = 0.00001*xsec_all;
 
   double ratio = (1e10*xsec_pn)/(1e10*xsec_all);
+
+//  My changes: start
+  std::cout << "\n";
+  std::cout << "\n";
+  std::cout << "\n";
+  std::cout << "Alon: ration = " << ration << "\n";
+  std::cout << "\n";
+  std::cout << "\n";
+  std::cout << "\n";
+//  My changes: end
+
 
   return ratio;
 }
@@ -288,7 +299,7 @@ bool SuSAv2MECPXSec::ValidProcess(const Interaction* interaction) const
   return true;
 }
 //_________________________________________________________________________
-double SuSAv2MECPXSec::Qvalue(const Interaction & interaction ) const 
+double SuSAv2MECPXSec::Qvalue(const Interaction & interaction ) const
 {
   // Get the hadron tensor for the selected nuclide. Check the probe PDG code
   // to know whether to use the tensor for CC neutrino scattering or for
@@ -349,12 +360,12 @@ double SuSAv2MECPXSec::Qvalue(const Interaction & interaction ) const
   // Apply Qvalue relative shift if needed:
   if( fQvalueShifter ) {
     // We have the option to add an additional shift on top of the binding energy correction
-    // The QvalueShifter, is a relative shift to the Q_value. 
+    // The QvalueShifter, is a relative shift to the Q_value.
     // The Q_value was already taken into account in the hadron tensor. Here we recalculate it
-    // to get the right absolute shift. 
+    // to get the right absolute shift.
     double tensor_Q_value = genie::utils::mec::Qvalue(tensor_pdg,probe_pdg);
-    double total_Q_value = tensor_Q_value + Delta_Q_value ; 
-    double Q_value_shift = total_Q_value * fQvalueShifter -> Shift( interaction.InitState().Tgt() ) ; 
+    double total_Q_value = tensor_Q_value + Delta_Q_value ;
+    double Q_value_shift = total_Q_value * fQvalueShifter -> Shift( interaction.InitState().Tgt() ) ;
     Delta_Q_value += Q_value_shift ;
   }
 
@@ -369,7 +380,7 @@ double SuSAv2MECPXSec::Qvalue(const Interaction & interaction ) const
   bool isEM = interaction.ProcInfo().IsEM();
   if ( isEM ) Delta_Q_value -= 2. * Eb_ten;
 
-  return Delta_Q_value ; 
+  return Delta_Q_value ;
 }
 //_________________________________________________________________________
 void SuSAv2MECPXSec::Configure(const Registry& config)
@@ -386,19 +397,19 @@ void SuSAv2MECPXSec::Configure(std::string config)
 //_________________________________________________________________________
 void SuSAv2MECPXSec::LoadConfig(void)
 {
-  bool good_config = true ; 
+  bool good_config = true ;
   // Cross section scaling factor
   GetParamDef("MEC-XSecScale", fXSecScale, 1.) ;
 
   fHadronTensorModel = dynamic_cast<const HadronTensorModelI*> ( this->SubAlg("HadronTensorAlg") );
   if( !fHadronTensorModel ) {
-    good_config = false ; 
+    good_config = false ;
     LOG("SuSAv2MECPXSec", pERROR) << "The required HadronTensorAlg does not exist. AlgoID is : " << SubAlg("HadronTensorAlg")->Id();
   }
 
   fXSecIntegrator = dynamic_cast<const XSecIntegratorI*> (this->SubAlg("NumericalIntegrationAlg"));
   if( !fXSecIntegrator ) {
-    good_config = false ; 
+    good_config = false ;
     LOG("SuSAv2MECPXSec", pERROR) << "The required NumericalIntegrationAlg does not exist. AlgId is : " << SubAlg("NumericalIntegrationAlg")->Id() ;
   }
 
@@ -420,22 +431,22 @@ void SuSAv2MECPXSec::LoadConfig(void)
   this->GetParam( "RFG-NucRemovalE@Pdg=1000822080", fEbPb );
 
   // Read optional MECScaleVsW:
-  fMECScaleAlg = nullptr; 
+  fMECScaleAlg = nullptr;
   if( GetConfig().Exists("MECScaleAlg") ) {
     fMECScaleAlg = dynamic_cast<const XSecScaleI *> ( this->SubAlg("MECScaleAlg") );
     if( !fMECScaleAlg ) {
-      good_config = false ; 
+      good_config = false ;
       LOG("Susav2MECPXSec", pERROR) << "The required MECScaleAlg cannot be casted. AlgID is : " << SubAlg("MECScaleAlg")->Id() ;
     }
   }
-  
+
   // Read optional QvalueShifter:
-  fQvalueShifter = nullptr; 
+  fQvalueShifter = nullptr;
   if( GetConfig().Exists("QvalueShifterAlg") ) {
     fQvalueShifter = dynamic_cast<const QvalueShifter *> ( this->SubAlg("QvalueShifterAlg") );
     if( !fQvalueShifter ) {
-      good_config = false ; 
-      LOG("SuSAv2MECPXSec", pERROR) << "The required QvalueShifterAlg does not exist. AlgId is : " << SubAlg("QvalueShifterAlg")->Id() ; 
+      good_config = false ;
+      LOG("SuSAv2MECPXSec", pERROR) << "The required QvalueShifterAlg does not exist. AlgId is : " << SubAlg("QvalueShifterAlg")->Id() ;
     }
   }
 
