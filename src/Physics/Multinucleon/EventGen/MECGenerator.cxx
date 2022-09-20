@@ -977,14 +977,14 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
 
 
 //  My changes: start
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
 //  My changes: end
 
 
