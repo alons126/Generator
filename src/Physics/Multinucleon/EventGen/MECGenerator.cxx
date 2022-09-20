@@ -932,16 +932,16 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
   double XSecMax = utils::mec::GetMaxXSecTlctl( *fXSecModel, *interaction );
 
 
-//  My changes: start
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-//  My changes: end
+////  My changes: start
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "Arriving here - confirmed!" << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+////  My changes: end
 
 
 
@@ -975,7 +975,21 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
     LOG("MEC", pDEBUG) << "T = " << T << ", Costh = " << Costh
       << ", Q2 = " << Q2;
 
-    // Don't bother doing hard work if the selected Q3 is greater than Q3Max
+
+//  My changes: start
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+//  My changes: end
+
+
+
+      // Don't bother doing hard work if the selected Q3 is greater than Q3Max
     // or if Q2 falls below the minimum allowed Q^2 value
     if ( Q3 < fQ3Max && Q2 >= Q2min ) {
 
