@@ -915,7 +915,7 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
     std::cout << "\n";
     std::cout << "\n";
     std::cout << "\n";
-    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST " << "\n";
+    std::cout << "Arriving here - confirmed!" << "\n";
     std::cout << "\n";
     std::cout << "\n";
     std::cout << "\n";
@@ -931,7 +931,21 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
   // section to throw against
   double XSecMax = utils::mec::GetMaxXSecTlctl( *fXSecModel, *interaction );
 
-  // loop over different (randomly) selected T and Costh
+
+//  My changes: start
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+//  My changes: end
+
+
+
+    // loop over different (randomly) selected T and Costh
   while ( !accept ) {
     ++iter;
     if ( iter > maxIter ) {
