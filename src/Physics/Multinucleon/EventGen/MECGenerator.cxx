@@ -976,16 +976,16 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
       << ", Q2 = " << Q2;
 
 
-//  My changes: start
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-//  My changes: end
+////  My changes: start
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "Arriving here - confirmed!" << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+////  My changes: end
 
 
 
@@ -1028,6 +1028,21 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
       accept = XSec > XSecMax*rnd->RndKine().Rndm();
       LOG("MEC", pINFO) << "Xsec, Max, Accept: " << XSec << ", "
         << XSecMax << ", " << accept;
+
+
+//  My changes: start
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+//  My changes: end
+
+
+
 
       if ( accept ) {
         // Now that we've selected kinematics, we also need to choose the
