@@ -1030,16 +1030,16 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
         << XSecMax << ", " << accept;
 
 
-//  My changes: start
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-//  My changes: end
+////  My changes: start
+//      std::cout << "\n";
+//      std::cout << "\n";
+//      std::cout << "\n";
+//      std::cout << "\n";
+//      std::cout << "Arriving here - confirmed!" << "\n";
+//      std::cout << "\n";
+//      std::cout << "\n";
+//      std::cout << "\n";
+////  My changes: end
 
 
 
@@ -1053,7 +1053,22 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
         double pnFraction = dynamic_cast< const SuSAv2MECPXSec* >( fXSecModel )
           ->PairRatio( interaction );
 
-        LOG("MEC", pINFO) << "Test for pn: "
+
+//  My changes: start
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST+++++" << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+//  My changes: end
+
+
+
+
+          LOG("MEC", pINFO) << "Test for pn: "
           << "; xsec = " << XSec << "; pn_fraction = " << pnFraction
           << "; random number val = " << myrand;
 
