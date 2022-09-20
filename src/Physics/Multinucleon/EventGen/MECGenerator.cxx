@@ -1079,17 +1079,16 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
           interaction->InitStatePtr()->TgtPtr()->SetHitNucPdg( kPdgClusterNP );
 
 
-//  My changes: start
-            std::cout << "\n";
-            std::cout << "\n";
-            std::cout << "\n";
-            std::cout << "\n";
-            std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST+++++" << "\n";
-            std::cout << "myrand <= pnFraction (pnFraction = " << pnFraction << ")" << "\n";
-            std::cout << "\n";
-            std::cout << "\n";
-            std::cout << "\n";
-//  My changes: end
+////  My changes: start
+//            std::cout << "\n";
+//            std::cout << "\n";
+//            std::cout << "\n";
+//            std::cout << "\n";
+//            std::cout << "Arriving here - confirmed!" << "\n";
+//            std::cout << "\n";
+//            std::cout << "\n";
+//            std::cout << "\n";
+////  My changes: end
 
 
 
@@ -1097,6 +1096,25 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
 
         }
         else {
+
+
+//  My changes: start
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST+++++" << "\n";
+          std::cout << "myrand > pnFraction (pnFraction = " << pnFraction << ", myrand = " << myrand << ")" << "\n";
+          std::cout << "NuPDG = " << NuPDG << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+//  My changes: end
+
+
+
+
+
           // no it is not a PN, add either NN or PP initial state to event record.
           if ( NuPDG > 0 ) {
             event->AddParticle(kPdgClusterNN, kIStNucleonTarget,
