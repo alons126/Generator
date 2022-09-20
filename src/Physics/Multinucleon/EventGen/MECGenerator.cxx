@@ -909,21 +909,7 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
   unsigned int iter = 0;
   unsigned int maxIter = kRjMaxIterations;
 
-
-////  My changes: start
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "Arriving here - confirmed!" << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-////  My changes: end
-
-
-
-    // TODO: revisit this
+  // TODO: revisit this
   // e-scat xsecs blow up close to theta=0, MC methods won't work ...
   if ( NuPDG == 11 ) maxIter *= 100000;
 
@@ -931,21 +917,7 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
   // section to throw against
   double XSecMax = utils::mec::GetMaxXSecTlctl( *fXSecModel, *interaction );
 
-
-////  My changes: start
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "Arriving here - confirmed!" << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-////  My changes: end
-
-
-
-    // loop over different (randomly) selected T and Costh
+  // loop over different (randomly) selected T and Costh
   while ( !accept ) {
     ++iter;
     if ( iter > maxIter ) {
@@ -975,21 +947,7 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
     LOG("MEC", pDEBUG) << "T = " << T << ", Costh = " << Costh
       << ", Q2 = " << Q2;
 
-
-////  My changes: start
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "Arriving here - confirmed!" << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-////  My changes: end
-
-
-
-      // Don't bother doing hard work if the selected Q3 is greater than Q3Max
+    // Don't bother doing hard work if the selected Q3 is greater than Q3Max
     // or if Q2 falls below the minimum allowed Q^2 value
     if ( Q3 < fQ3Max && Q2 >= Q2min ) {
 
@@ -1029,21 +987,6 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
       LOG("MEC", pINFO) << "Xsec, Max, Accept: " << XSec << ", "
         << XSecMax << ", " << accept;
 
-
-////  My changes: start
-//      std::cout << "\n";
-//      std::cout << "\n";
-//      std::cout << "\n";
-//      std::cout << "\n";
-//      std::cout << "Arriving here - confirmed!" << "\n";
-//      std::cout << "\n";
-//      std::cout << "\n";
-//      std::cout << "\n";
-////  My changes: end
-
-
-
-
       if ( accept ) {
         // Now that we've selected kinematics, we also need to choose the
         // isospin of the initial hit nucleon pair
@@ -1053,22 +996,7 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
         double pnFraction = dynamic_cast< const SuSAv2MECPXSec* >( fXSecModel )
           ->PairRatio( interaction );
 
-
-////  My changes: start
-//          std::cout << "\n";
-//          std::cout << "\n";
-//          std::cout << "\n";
-//          std::cout << "\n";
-//          std::cout << "Arriving here - confirmed!" << "\n";
-//          std::cout << "\n";
-//          std::cout << "\n";
-//          std::cout << "\n";
-////  My changes: end
-
-
-
-
-          LOG("MEC", pINFO) << "Test for pn: "
+        LOG("MEC", pINFO) << "Test for pn: "
           << "; xsec = " << XSec << "; pn_fraction = " << pnFraction
           << "; random number val = " << myrand;
 
@@ -1077,23 +1005,6 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
           event->AddParticle(kPdgClusterNP, kIStNucleonTarget,
             1, -1, -1, -1, tempp4, v4);
           interaction->InitStatePtr()->TgtPtr()->SetHitNucPdg( kPdgClusterNP );
-
-
-////  My changes: start
-//            std::cout << "\n";
-//            std::cout << "\n";
-//            std::cout << "\n";
-//            std::cout << "\n";
-//            std::cout << "Arriving here - confirmed!" << "\n";
-//            std::cout << "\n";
-//            std::cout << "\n";
-//            std::cout << "\n";
-////  My changes: end
-
-
-
-
-
         }
         else {
 
@@ -1103,16 +1014,12 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
           std::cout << "\n";
           std::cout << "\n";
           std::cout << "\n";
-          std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST+++++" << "\n";
           std::cout << "myrand > pnFraction (pnFraction = " << pnFraction << ", myrand = " << myrand << ")" << "\n";
           std::cout << "NuPDG = " << NuPDG << "\n";
           std::cout << "\n";
           std::cout << "\n";
           std::cout << "\n";
 //  My changes: end
-
-
-
 
 
           // no it is not a PN, add either NN or PP initial state to event record.
