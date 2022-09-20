@@ -987,6 +987,24 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
       LOG("MEC", pINFO) << "Xsec, Max, Accept: " << XSec << ", "
         << XSecMax << ", " << accept;
 
+
+
+
+
+//        My changes: start
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "Alon: pnFraction *1* (in MECGenerator) = " << pnFraction << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+      std::cout << "\n";
+//        My changes: end
+
+
+
+
+
       if ( accept ) {
         // Now that we've selected kinematics, we also need to choose the
         // isospin of the initial hit nucleon pair
@@ -1007,7 +1025,20 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
           interaction->InitStatePtr()->TgtPtr()->SetHitNucPdg( kPdgClusterNP );
         }
         else {
-          // no it is not a PN, add either NN or PP initial state to event record.
+
+
+//        My changes: start
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "Alon: pnFraction *2* (in MECGenerator) = " << pnFraction << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+          std::cout << "\n";
+//        My changes: end
+
+
+            // no it is not a PN, add either NN or PP initial state to event record.
           if ( NuPDG > 0 ) {
             event->AddParticle(kPdgClusterNN, kIStNucleonTarget,
               1, -1, -1, -1, tempp4, v4);
