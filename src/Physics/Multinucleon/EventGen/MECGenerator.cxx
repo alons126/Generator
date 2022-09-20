@@ -910,16 +910,16 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
   unsigned int maxIter = kRjMaxIterations;
 
 
-//  My changes: start
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "Arriving here - confirmed!" << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-//  My changes: end
+////  My changes: start
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "Arriving here - confirmed!" << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+////  My changes: end
 
 
 
