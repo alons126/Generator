@@ -855,16 +855,6 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
   if ( interaction->ProcInfo().IsEM() ) Q2min = genie::utils::kinematics
     ::electromagnetic::kMinQ2Limit; // EM limit
 
-//        My changes: start
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST   1" << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-//        My changes: end
-
   LOG("MEC", pDEBUG) << "Q2min = " << Q2min;
 
   double Enu = interaction->InitState().ProbeE( kRfLab );
@@ -919,24 +909,23 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
   unsigned int iter = 0;
   unsigned int maxIter = kRjMaxIterations;
 
-  // TODO: revisit this
+
+//  My changes: start
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST " << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+//  My changes: end
+
+
+
+    // TODO: revisit this
   // e-scat xsecs blow up close to theta=0, MC methods won't work ...
   if ( NuPDG == 11 ) maxIter *= 100000;
-
-
-
-
-//        My changes: start
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST   2" << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-//        My changes: end
-
-
 
   // Scan the accessible phase space to find the maximum differential cross
   // section to throw against
@@ -972,22 +961,7 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
     LOG("MEC", pDEBUG) << "T = " << T << ", Costh = " << Costh
       << ", Q2 = " << Q2;
 
-
-
-
-//        My changes: start
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST   3" << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-//        My changes: end
-
-
-
-      // Don't bother doing hard work if the selected Q3 is greater than Q3Max
+    // Don't bother doing hard work if the selected Q3 is greater than Q3Max
     // or if Q2 falls below the minimum allowed Q^2 value
     if ( Q3 < fQ3Max && Q2 >= Q2min ) {
 
@@ -1027,24 +1001,6 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
       LOG("MEC", pINFO) << "Xsec, Max, Accept: " << XSec << ", "
         << XSecMax << ", " << accept;
 
-
-
-
-
-//        My changes: start
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "Alon: pnFraction *1* (in MECGenerator) = " << pnFraction << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-      std::cout << "\n";
-//        My changes: end
-
-
-
-
-
       if ( accept ) {
         // Now that we've selected kinematics, we also need to choose the
         // isospin of the initial hit nucleon pair
@@ -1065,20 +1021,7 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
           interaction->InitStatePtr()->TgtPtr()->SetHitNucPdg( kPdgClusterNP );
         }
         else {
-
-
-//        My changes: start
-          std::cout << "\n";
-          std::cout << "\n";
-          std::cout << "\n";
-          std::cout << "Alon: pnFraction *2* (in MECGenerator) = " << pnFraction << "\n";
-          std::cout << "\n";
-          std::cout << "\n";
-          std::cout << "\n";
-//        My changes: end
-
-
-            // no it is not a PN, add either NN or PP initial state to event record.
+          // no it is not a PN, add either NN or PP initial state to event record.
           if ( NuPDG > 0 ) {
             event->AddParticle(kPdgClusterNN, kIStNucleonTarget,
               1, -1, -1, -1, tempp4, v4);
