@@ -260,6 +260,7 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
   std::cout << "\n";
   std::cout << "\n";
   std::cout << "\n";
+  std::cout << "\n";
   std::cout << "Alon: ratio (in PairRatio) = " << ratio << "\n";
   std::cout << "\n";
   std::cout << "\n";

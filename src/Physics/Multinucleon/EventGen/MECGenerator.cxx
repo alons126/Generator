@@ -855,6 +855,16 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
   if ( interaction->ProcInfo().IsEM() ) Q2min = genie::utils::kinematics
     ::electromagnetic::kMinQ2Limit; // EM limit
 
+//        My changes: start
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST" << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+//        My changes: end
+
   LOG("MEC", pDEBUG) << "Q2min = " << Q2min;
 
   double Enu = interaction->InitState().ProbeE( kRfLab );
