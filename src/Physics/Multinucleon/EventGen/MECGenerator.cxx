@@ -1025,15 +1025,15 @@ void MECGenerator::SelectSuSALeptonKinematics(GHepRecord* event) const
 //            std::cout << "\n";
 //            std::cout << "\n";
             if ( myrandPP<=0.5 ) {
-              // record a NN pair (assuming probability of 0.5).
-              event->AddParticle(kPdgClusterNN, kIStNucleonTarget,
-                                 1, -1, -1, -1, tempp4, v4);
-              interaction->InitStatePtr()->TgtPtr()->SetHitNucPdg( kPdgClusterNN );
-            } else {
-              // record a PP pair (assuming probability of 0.5).
+              // record a 2P pair (assuming probability of 0.5).
               event->AddParticle(kPdgClusterPP, kIStNucleonTarget,
                                  1, -1, -1, -1, tempp4, v4);
               interaction->InitStatePtr()->TgtPtr()->SetHitNucPdg( kPdgClusterPP );
+            } else {
+              // record a 2N pair (assuming probability of 0.5).
+              event->AddParticle(kPdgClusterNN, kIStNucleonTarget,
+                                 1, -1, -1, -1, tempp4, v4);
+              interaction->InitStatePtr()->TgtPtr()->SetHitNucPdg( kPdgClusterNN );
             }
           } else {
             // no it is not a PN, add either NN or PP initial state to event record (other cases).
