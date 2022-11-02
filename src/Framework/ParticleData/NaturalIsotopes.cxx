@@ -118,11 +118,16 @@ const NaturalIsotopeElementData *
   }
   
   vector<NaturalIsotopeElementData*> vec = miter->second;
-  for (int i; i<vec.size(); i++) {
+
+//  My changes: start
+  for (unsigned int i = 0 ; i<vec.size(); i++) {
+//  for (int i; i<vec.size(); i++) { // Original line
     if (vec[i]->PdgCode()==pdgcode) return vec[i];
   }
+//  My changes: end
 
-  LOG("NatIsotop", pWARN) 
+
+    LOG("NatIsotop", pWARN)
     << "Natural isotope Z = " << Z << " has " << vec.size() << " elements"
     << " (pdgcode = " << pdgcode << " was requested)";
   return 0;
