@@ -174,10 +174,10 @@ double SuSAv2MECPXSec::XSec(const Interaction* interaction,
 }
 //_________________________________________________________________________
 //  My changes (asportes): start
-//double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string final_state_ratio = "pnFraction") const
-//{
-double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
+double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string final_state_ratio = "pnFraction") const
 {
+//double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
+//{
 //  My changes (asportes): end
 
   // Currently we only have the relative pair contributions for C12.
