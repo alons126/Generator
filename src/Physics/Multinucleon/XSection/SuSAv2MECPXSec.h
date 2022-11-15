@@ -62,8 +62,8 @@ public:
 
 // Me edit:
   // Method specifically for evaluating nn/np pair probabilities
-//  double PairRatio(const Interaction* i, std::string final_state_ratio = "pnFraction") const;
-  double PairRatio(const Interaction* i, std::string final_state_ratio) const;
+  double PairRatio(const Interaction* i, std::string final_state_ratio = "pnFraction") const;
+//  double PairRatio(const Interaction* i, std::string final_state_ratio) const;
 //  My changes (asportes): end
 
 private:
