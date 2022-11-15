@@ -119,12 +119,12 @@ const NaturalIsotopeElementData *
   
   vector<NaturalIsotopeElementData*> vec = miter->second;
 
-//  My changes: start
+//  My changes (asportes): start
   for (unsigned int i = 0 ; i<vec.size(); i++) {
 //  for (int i; i<vec.size(); i++) { // Original line
     if (vec[i]->PdgCode()==pdgcode) return vec[i];
   }
-//  My changes: end
+//  My changes (asportes): end
 
 
     LOG("NatIsotop", pWARN)

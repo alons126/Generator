@@ -43,9 +43,10 @@ typedef enum HadronTensorType {
   kHT_MEC_Deltapn,
   kHT_MEC_EM,
 
-//  My changes: start
+//  My changes (asportes): start
   kHT_MEC_EM_pn,
-//  My changes: end
+  kHT_MEC_EM_pp,
+//  My changes (asportes): end
 
   kHT_QE_EM,
   kHT_MEC_FullAll_Param,

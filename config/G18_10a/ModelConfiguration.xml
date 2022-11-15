@@ -57,11 +57,14 @@ STFC, Rutherford Appleton Laboratory
    - genie::HNIntranuke2018/OsetOff
   -->
 
-  <!-- fsi On: -->
+  <!-- My changes (asportes): start -->
+  <!--  Uncomment to turn FSI On: -->
   <param type="bool" name="HadronTransp-Enable"> true </param>
 
-  <!-- fsi Off: -->
+  <!--  Uncomment to turn FSI OFF: -->
   <!-- <param type="bool" name="HadronTransp-Enable"> false </param> -->
+  <!-- My changes (asportes): end -->
+
 
   <param type="alg"  name="HadronTransp-Model">  genie::HAIntranuke2018/Default  </param>
 

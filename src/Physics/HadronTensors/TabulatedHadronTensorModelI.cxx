@@ -43,10 +43,12 @@ namespace {
     else if (str == "MEC_EM")
       return genie::kHT_MEC_EM;
 
-//  My changes: start
+//  My changes (asportes): start
     else if (str == "MEC_EM_pn")
         return genie::kHT_MEC_EM_pn;
-//  My changes: end
+    else if (str == "MEC_EM_pp")
+        return genie::kHT_MEC_EM_pp;
+//  My changes (asportes): end
 
     else if (str == "MEC_EM_wImag")
       return genie::kHT_MEC_EM_wImag;
@@ -73,9 +75,10 @@ namespace {
     else if ( htt == genie::kHT_MEC_Deltapn ) return "MEC_Deltapn";
     else if ( htt == genie::kHT_MEC_EM ) return "MEC_EM";
 
-//  My changes: start
+//  My changes (asportes): start
     else if ( htt == genie::kHT_MEC_EM_pn ) return "MEC_EM_pn";
-//  My changes: end
+    else if ( htt == genie::kHT_MEC_EM_pp ) return "MEC_EM_pp";
+//  My changes (asportes): end
 
     else if ( htt == genie::kHT_MEC_EM_wImag ) return "MEC_EM_wImag";
     else if ( htt == genie::kHT_QE_EM ) return "QE_EM";

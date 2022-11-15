@@ -66,10 +66,10 @@ double SuSAv2MECPXSec::XSec(const Interaction* interaction,
     // For the moment all electron interactions are pp final state
     tensor_type = kHT_MEC_EM;
 
-//  My changes: start
+//  My changes (asportes): start
 //    pn_tensor_type = kHT_MEC_EM; // Original line
 //    pn_tensor_type = kHT_MEC_EM_pn; // Mine (uncomment to apply change)
-//  My changes: end
+//  My changes (asportes): end
 
   }
 
@@ -173,7 +173,7 @@ double SuSAv2MECPXSec::XSec(const Interaction* interaction,
   return xsec;
 }
 //_________________________________________________________________________
-double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
+double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string final_state_ratio = "pnFraction") const
 {
 
   // Currently we only have the relative pair contributions for C12.
@@ -193,10 +193,11 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
     // For the moment all electron interactions are pp final state
     tensor_type = kHT_MEC_EM;
 
-//  My changes: start
+//  My changes (asportes): start
 //    pn_tensor_type = kHT_MEC_EM; // Original line
     pn_tensor_type = kHT_MEC_EM_pn;
-//  My changes: end
+    pp_tensor_type = kHT_MEC_EM_pp;
+//  My changes (asportes): end
 
   }
 
@@ -207,9 +208,17 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
     = dynamic_cast<const LabFrameHadronTensorI*>( fHadronTensorModel->GetTensor(kPdgTgtC12,
     tensor_type) );
 
+// My changes (asportes): start
+  // Original code:
   const LabFrameHadronTensorI* tensor_pn
     = dynamic_cast<const LabFrameHadronTensorI*>( fHadronTensorModel->GetTensor(kPdgTgtC12,
     pn_tensor_type) );
+
+  // My addition (pp tensor):
+  const LabFrameHadronTensorI* tensor_pp
+    = dynamic_cast<const LabFrameHadronTensorI*>( fHadronTensorModel->GetTensor(kPdgTgtC12,
+    pp_tensor_type) );
+// My changes (asportes): end
 
 
   /// \todo add the different pair configurations for e-scattering
@@ -246,27 +255,48 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
   // However, additional corrections may be necessary:
   double Delta_Q_value = Qvalue( * interaction ) ;
 
-  // Compute the cross section using the hadron tensor
+// My changes (asportes): start
+    // Compute the cross section using the hadron tensor
   double xsec_all = tensor->dSigma_dT_dCosTheta_rosenbluth(interaction, Delta_Q_value);
   double xsec_pn = tensor_pn->dSigma_dT_dCosTheta_rosenbluth(interaction, Delta_Q_value);
+// My changes (asportes): end
 
-  //hadron tensor precision can sometimes lead to 0 xsec_pn but finite xsec
+
+// My changes (asportes): start
+  // Original code:
+    //hadron tensor precision can sometimes lead to 0 xsec_pn but finite xsec
   //seems to cause issues downstream ...
   if(xsec_pn==0) xsec_pn = 0.00001*xsec_all;
 
-  double ratio = (1e10*xsec_pn)/(1e10*xsec_all);
+  double pnFraction = (1e10*xsec_pn)/(1e10*xsec_all);
 
-//  My changes: start
-  std::cout << "\n";
-  std::cout << "\n";
-  std::cout << "\n";
-  std::cout << "\n";
-  std::cout << "Alon: ratio (in PairRatio) = " << ratio << "\n";
-  std::cout << "\n";
-  std::cout << "\n";
-  std::cout << "\n";
-//  My changes: end
+  // My addition:
+  double ratio;
 
+  if (final_state_ratio == "pnFraction") {
+    ratio = pnFraction;
+
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "Alon: pnFraction (in PairRatio) = " << ratio << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+
+  } else if (final_state_ratio == "ppFraction") {
+    double xsec_pp = tensor_pp->dSigma_dT_dCosTheta_rosenbluth(interaction, Delta_Q_value);
+
+    if(xsec_pp==0) xsec_pp = 0.00001*xsec_all;
+
+    double ppFraction = (1e10*xsec_pp)/(1e10*xsec_all);
+
+    ratio = ppFraction;
+  }
+//  My changes (asportes): end
 
   return ratio;
 }
