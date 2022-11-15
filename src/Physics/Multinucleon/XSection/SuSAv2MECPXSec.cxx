@@ -173,8 +173,12 @@ double SuSAv2MECPXSec::XSec(const Interaction* interaction,
   return xsec;
 }
 //_________________________________________________________________________
-double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string final_state_ratio = "pnFraction") const
+//  My changes (asportes): start
+//double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string final_state_ratio = "pnFraction") const
+//{
+double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
 {
+//  My changes (asportes): end
 
   // Currently we only have the relative pair contributions for C12.
   // We hope to add mode later, but for the moment assume the relative
@@ -182,8 +186,15 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string fin
 
   int probe_pdg = interaction->InitState().ProbePdg();
 
+//  My changes (asportes): start
+// Original code:
   HadronTensorType_t tensor_type = kHT_Undefined;
   HadronTensorType_t pn_tensor_type = kHT_Undefined;
+
+// My addition:
+  HadronTensorType_t pp_tensor_type = kHT_Undefined;
+//  My changes (asportes): end
+
   if ( pdg::IsNeutrino(probe_pdg) || pdg::IsAntiNeutrino(probe_pdg) ) {
     tensor_type = kHT_MEC_FullAll;
     pn_tensor_type = kHT_MEC_Fullpn;
