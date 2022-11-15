@@ -55,9 +55,15 @@ public:
   void Configure (const Registry & config);
   void Configure (string config);
 
-  // Method specifically for evaluating nn/np pair probabilities
-  double PairRatio(const Interaction* i) const;
+//  My changes (asportes): start
+// Original code:
+//  // Method specifically for evaluating nn/np pair probabilities
+//  double PairRatio(const Interaction* i) const;
 
+// Me edit:
+  // Method specifically for evaluating nn/np pair probabilities
+  double PairRatio(const Interaction* i, std::string final_state_ratio = "pnFraction") const;
+//  My changes (asportes): end
 
 private:
 
