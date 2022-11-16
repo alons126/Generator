@@ -281,20 +281,20 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string fin
   //seems to cause issues downstream ...
   if(xsec_pn==0) xsec_pn = 0.00001*xsec_all;
 
-  double pnFraction = (1e10*xsec_pn)/(1e10*xsec_all);
+  double pn_ratio = (1e10*xsec_pn)/(1e10*xsec_all);
 
   // My addition:
   double ratio;
 
   if (final_state_ratio == "pnFraction") {
-    ratio = pnFraction;
+    ratio = pn_ratio;
 
     std::cout << "\n";
     std::cout << "\n";
     std::cout << "\n";
     std::cout << "\n";
     std::cout << "\n";
-    std::cout << "Alon: pnFraction (in PairRatio) = " << ratio << "\n";
+    std::cout << "Alon: pn_ratio (in PairRatio) = " << ratio << "\n";
     std::cout << "\n";
     std::cout << "\n";
     std::cout << "\n";
@@ -305,9 +305,21 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string fin
 
     if(xsec_pp==0) xsec_pp = 0.00001*xsec_all;
 
-    double ppFraction = (1e10*xsec_pp)/(1e10*xsec_all);
+    double pp_ratio = (1e10*xsec_pp)/(1e10*xsec_all);
 
-    ratio = ppFraction;
+    ratio = pp_ratio;
+
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST" << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
+
   }
 //  My changes (asportes): end
 

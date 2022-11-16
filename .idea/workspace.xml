@@ -12,7 +12,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec68b7ea-52f0-43fc-811a-7c04cb7b2565" name="Changes" comment="" />
+    <list default="true" id="ec68b7ea-52f0-43fc-811a-7c04cb7b2565" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Physics/Multinucleon/XSection/SuSAv2MECPXSec.cxx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Physics/Multinucleon/XSection/SuSAv2MECPXSec.cxx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,10 +47,34 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
     &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="converter" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Generator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\alons\AppData\Local\Programs\Python\Python39\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../Assignments/07 Turning off FSI and fixing SuSAv2 - FINISHED/Hadron tensor tables/01 SuSA -question" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../Assignments/07 Turning off FSI and fixing SuSAv2 - FINISHED/Hadron tensor tables/01 SuSA -question/converter.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -92,6 +119,14 @@
       <workItem from="1667987755323" duration="24000" />
       <workItem from="1668498693193" duration="6757000" />
       <workItem from="1668518033708" duration="2815000" />
+      <workItem from="1668590986059" duration="18000" />
+      <workItem from="1668591520362" duration="1000" />
+      <workItem from="1668591561520" duration="4000" />
+      <workItem from="1668591622190" duration="111000" />
+      <workItem from="1668592324980" duration="159000" />
+      <workItem from="1668594572254" duration="194000" />
+      <workItem from="1668594796628" duration="602000" />
+      <workItem from="1668595418227" duration="5640000" />
     </task>
     <servers />
   </component>
@@ -108,5 +143,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SuSAv2_1000060120_MEC_EM_pn_dat$converter.coverage" NAME="converter Coverage Results" MODIFIED="1668604184499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Assignments/07 Turning off FSI and fixing SuSAv2 - FINISHED/Hadron tensor tables/01 SuSA -question" />
   </component>
 </project>
