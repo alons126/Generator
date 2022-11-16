@@ -127,6 +127,7 @@
       <workItem from="1668594572254" duration="194000" />
       <workItem from="1668594796628" duration="602000" />
       <workItem from="1668595418227" duration="5640000" />
+      <workItem from="1668605689090" duration="7000" />
     </task>
     <servers />
   </component>
@@ -143,8 +144,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SuSAv2_1000060120_MEC_EM_pn_dat$converter.coverage" NAME="converter Coverage Results" MODIFIED="1668604184499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Assignments/07 Turning off FSI and fixing SuSAv2 - FINISHED/Hadron tensor tables/01 SuSA -question" />
   </component>
 </project>

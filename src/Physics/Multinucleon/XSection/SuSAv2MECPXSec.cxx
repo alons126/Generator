@@ -309,16 +309,16 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string fin
 
     ratio = pp_ratio;
 
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST" << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST" << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
+//    std::cout << "\n";
 
   }
 //  My changes (asportes): end
