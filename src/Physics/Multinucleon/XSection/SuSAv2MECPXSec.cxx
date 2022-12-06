@@ -174,12 +174,9 @@ double SuSAv2MECPXSec::XSec(const Interaction* interaction,
 }
 //_________________________________________________________________________
 //  My changes (asportes): start
-//double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string final_state_ratio = "pnFraction") const
-//{
+// PairRatio has been modified to calculate ppFraction if required
 double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string final_state_ratio) const
 {
-//double SuSAv2MECPXSec::PairRatio(const Interaction* interaction) const
-//{
 //  My changes (asportes): end
 
   // Currently we only have the relative pair contributions for C12.
@@ -189,11 +186,11 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string fin
   int probe_pdg = interaction->InitState().ProbePdg();
 
 //  My changes (asportes): start
-// Original code:
+// Original code (total & pn tensors):
   HadronTensorType_t tensor_type = kHT_Undefined;
   HadronTensorType_t pn_tensor_type = kHT_Undefined;
 
-// My addition:
+// My addition (pp tensor):
   HadronTensorType_t pp_tensor_type = kHT_Undefined;
 //  My changes (asportes): end
 
@@ -222,7 +219,7 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string fin
     tensor_type) );
 
 // My changes (asportes): start
-  // Original code:
+  // Original code (pn tensor):
   const LabFrameHadronTensorI* tensor_pn
     = dynamic_cast<const LabFrameHadronTensorI*>( fHadronTensorModel->GetTensor(kPdgTgtC12,
     pn_tensor_type) );
@@ -269,36 +266,22 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string fin
   double Delta_Q_value = Qvalue( * interaction ) ;
 
 // My changes (asportes): start
-    // Compute the cross section using the hadron tensor
+  // Compute the cross section using the hadron tensor
   double xsec_all = tensor->dSigma_dT_dCosTheta_rosenbluth(interaction, Delta_Q_value);
-  double xsec_pn = tensor_pn->dSigma_dT_dCosTheta_rosenbluth(interaction, Delta_Q_value);
-// My changes (asportes): end
 
-
-// My changes (asportes): start
-  // Original code:
-    //hadron tensor precision can sometimes lead to 0 xsec_pn but finite xsec
-  //seems to cause issues downstream ...
-  if(xsec_pn==0) xsec_pn = 0.00001*xsec_all;
-
-  double pn_ratio = (1e10*xsec_pn)/(1e10*xsec_all);
-
-  // My addition:
+//  My addition:
   double ratio;
 
-  if (final_state_ratio == "pnFraction") {
-    ratio = pn_ratio;
+  if (final_state_ratio == "pnFraction") { // pnFraction will be calculated by default
+    double xsec_pn = tensor_pn->dSigma_dT_dCosTheta_rosenbluth(interaction, Delta_Q_value);
 
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "Alon: pn_ratio (in PairRatio) = " << ratio << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
+    //hadron tensor precision can sometimes lead to 0 xsec_pn but finite xsec
+    //seems to cause issues downstream ...
+    if(xsec_pn==0) xsec_pn = 0.00001*xsec_all;
+
+    double pn_ratio = (1e10*xsec_pn)/(1e10*xsec_all);
+
+    ratio = pn_ratio;
 
   } else if (final_state_ratio == "ppFraction") {
     double xsec_pp = tensor_pp->dSigma_dT_dCosTheta_rosenbluth(interaction, Delta_Q_value);
@@ -308,17 +291,6 @@ double SuSAv2MECPXSec::PairRatio(const Interaction* interaction, std::string fin
     double pp_ratio = (1e10*xsec_pp)/(1e10*xsec_all);
 
     ratio = pp_ratio;
-
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST pp TEST" << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
-//    std::cout << "\n";
 
   }
 //  My changes (asportes): end
