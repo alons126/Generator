@@ -14,3 +14,9 @@ src/Framework/Conventions/GVersion.h
 *.rootmap
 *_ROOT_DICT_*
 *.swp
+.idea/.name
+*.iml
+.idea/misc.xml
+.idea/deployment.xml
+.idea/modules.xml
+.idea/vcs.xml

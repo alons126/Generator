@@ -96,7 +96,7 @@ namespace kinematics
 
   //-- Functions used to define differential cross section distribution envelopes 
   //-- for importance sampling in kinematical selection modules
-  double RESImportanceSamplingEnvelope(double * x, double * par);
+  double RESImportanceSamplingEnvelope(double * x, double * par);11
   double DISImportanceSamplingEnvelope(double * x, double * par);
   double COHImportanceSamplingEnvelope(double * x, double * par);
 
@@ -111,7 +111,7 @@ namespace kinematics
    Range1D_t  InelYLim    (double El, double ml, double M);
    Range1D_t  InelYLim_X  (double El, double ml, double M, double x);
 
-   static const double kMinQ2Limit   = 0.02;  // GeV^2 // Q2 threshold relevant for em scattering events
+   static const double kMinQ2Limit   = 0.5;  // GeV^2 // Q2 threshold relevant for em scattering events
   }
 
 } // kinematics namespace
