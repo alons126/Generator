@@ -96,7 +96,7 @@ namespace kinematics
 
   //-- Functions used to define differential cross section distribution envelopes 
   //-- for importance sampling in kinematical selection modules
-  double RESImportanceSamplingEnvelope(double * x, double * par);11
+  double RESImportanceSamplingEnvelope(double * x, double * par);
   double DISImportanceSamplingEnvelope(double * x, double * par);
   double COHImportanceSamplingEnvelope(double * x, double * par);
 
